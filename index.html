@@ -101,14 +101,17 @@
     padding:16px 28px;
     max-width:var(--edge);
     margin:0 auto;
+    gap:16px;
   }
   .logo{
     font-family:var(--mono);
     font-size:14px;
     letter-spacing:0.02em;
     color:var(--teal);
+    flex-shrink:0;
   }
   .logo span{color:var(--ink-faint);}
+  .nav-right{display:flex; align-items:center; gap:22px;}
   nav.links{display:none; gap:26px; font-family:var(--mono); font-size:13px;}
   nav.links a{
     color:var(--ink-dim);
@@ -121,6 +124,35 @@
   }
   nav.links a:hover{color:var(--teal); border-color:var(--teal);}
   @media(min-width:700px){ nav.links{display:flex;} }
+
+  .lang-switch{
+    display:flex;
+    border:1px solid var(--line-strong);
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.04em;
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  .lang-switch button{
+    background:transparent;
+    border:none;
+    color:var(--ink-faint);
+    padding:6px 10px;
+    cursor:pointer;
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.04em;
+    transition:background .2s, color .2s;
+    border-left:1px solid var(--line-strong);
+  }
+  .lang-switch button:first-child{border-left:none;}
+  .lang-switch button:hover{color:var(--teal);}
+  .lang-switch button[aria-pressed="true"]{
+    background:var(--teal);
+    color:#08131c;
+    font-weight:500;
+  }
 
   /* ---------- Hero ---------- */
   .hero{
@@ -205,6 +237,8 @@
     color:var(--ink);
     letter-spacing:0.02em;
     transition:background .2s, border-color .2s, color .2s;
+    background:transparent;
+    cursor:pointer;
   }
   .btn.primary{background:var(--teal); color:#08131c; border-color:var(--teal); font-weight:500;}
   .btn.primary:hover{background:#96d1ca;}
@@ -259,12 +293,13 @@
     padding:13px 18px;
     border-bottom:1px solid var(--line);
     font-size:13.5px;
+    gap:12px;
   }
   .fact-list div:last-child{border-bottom:none;}
-  .fact-list dt{font-family:var(--mono); color:var(--ink-faint);}
+  .fact-list dt{font-family:var(--mono); color:var(--ink-faint); white-space:nowrap;}
   .fact-list dd{margin:0; color:var(--ink); text-align:right;}
 
-  /* ---------- Experience (timeline is chronological -> ok to be sequential) ---------- */
+  /* ---------- Experience ---------- */
   .timeline{position:relative; padding-left:26px; border-left:1px solid var(--line-strong);}
   .tl-item{position:relative; padding-bottom:44px;}
   .tl-item:last-child{padding-bottom:0;}
@@ -409,13 +444,20 @@
 <header class="top">
   <div class="navrow">
     <div class="logo">EK<span>.dev</span></div>
-    <nav class="links">
-      <a href="#hakkimda">hakkımda</a>
-      <a href="#deneyim">deneyim</a>
-      <a href="#yetenekler">yetenekler</a>
-      <a href="#projeler">projeler</a>
-      <a href="#iletisim">iletişim</a>
-    </nav>
+    <div class="nav-right">
+      <nav class="links">
+        <a href="#hakkimda" data-i18n="nav-about">hakkımda</a>
+        <a href="#deneyim" data-i18n="nav-exp">deneyim</a>
+        <a href="#yetenekler" data-i18n="nav-skills">yetenekler</a>
+        <a href="#projeler" data-i18n="nav-projects">projeler</a>
+        <a href="#iletisim" data-i18n="nav-contact">iletişim</a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Language / Dil / Język">
+        <button type="button" data-lang="tr" aria-pressed="true">TR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="pl" aria-pressed="false">PL</button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -424,67 +466,67 @@
 
   <section class="hero" id="top">
     <div class="node" style="top:96px;"></div>
-    <p class="eyebrow">software engineer / mobile &amp; backend</p>
+    <p class="eyebrow" data-i18n="hero-eyebrow">software engineer / mobile &amp; backend</p>
     <div class="schema-box">
       <h1>Emir Karatekin</h1>
       <p class="role">Java · Kotlin · Spring Boot · React Native</p>
-      <p class="desc">Mobil ve backend sistemler kuran, ölçeklenebilir yazılım mimarileri üzerine çalışan yeni mezun bir yazılım mühendisi. Erasmus+ kapsamındaki Avrupa Birliği projelerinde web ve mobil uygulamalar geliştirdi.</p>
+      <p class="desc" data-i18n="hero-desc">Mobil ve backend sistemler kuran, ölçeklenebilir yazılım mimarileri üzerine çalışan yeni mezun bir yazılım mühendisi. Erasmus+ kapsamındaki Avrupa Birliği projelerinde web ve mobil uygulamalar geliştirdi.</p>
     </div>
     <div class="hero-meta">
-      <span>📍 Varşova, Polonya</span>
+      <span>📍 <span data-i18n="hero-location">Varşova, Polonya</span></span>
       <span>✉ emirkaratekin96@gmail.com</span>
       <span>☎ +48 797 037 087</span>
     </div>
     <div class="hero-cta">
-      <a class="btn primary" href="#projeler">projelere göz at</a>
-      <a class="btn" href="#iletisim">iletişime geç</a>
+      <a class="btn primary" href="#projeler" data-i18n="hero-cta-primary">projelere göz at</a>
+      <a class="btn" href="#iletisim" data-i18n="hero-cta-secondary">iletişime geç</a>
     </div>
   </section>
 
   <section id="hakkimda">
     <div class="node" style="top:76px;"></div>
-    <p class="tag">// hakkımda</p>
-    <h2 class="title">Sistemleri uçtan uca kurmayı seviyorum</h2>
+    <p class="tag" data-i18n="about-tag">// hakkımda</p>
+    <h2 class="title" data-i18n="about-title">Sistemleri uçtan uca kurmayı seviyorum</h2>
     <div class="about-grid reveal">
       <div class="about-text">
-        <p>Vizja Üniversitesi'nde <strong>Bilgisayar Mühendisliği, Mobil Uygulama Tasarımı</strong> alanında eğitimimi sürdürüyorum. Java, Kotlin, Spring Boot, React Native, SQL ve Git ile akademik ve kişisel projeler geliştirdim.</p>
-        <p>Ölçeklenebilir uygulamalar kurmaya, güncel teknolojileri öğrenmeye ve yazılım geliştirme becerilerimi sürekli geliştirmeye tutkuyla bağlıyım. Şu anda katkı sağlayıp aynı zamanda gelişebileceğim bir <strong>Junior Software Engineer</strong> pozisyonu arıyorum.</p>
+        <p data-i18n="about-p1">Vizja Üniversitesi'nde <strong>Bilgisayar Mühendisliği, Mobil Uygulama Tasarımı</strong> alanında eğitimimi sürdürüyorum. Java, Kotlin, Spring Boot, React Native, SQL ve Git ile akademik ve kişisel projeler geliştirdim.</p>
+        <p data-i18n="about-p2">Ölçeklenebilir uygulamalar kurmaya, güncel teknolojileri öğrenmeye ve yazılım geliştirme becerilerimi sürekli geliştirmeye tutkuyla bağlıyım. Şu anda katkı sağlayıp aynı zamanda gelişebileceğim bir <strong>Junior Software Engineer</strong> pozisyonu arıyorum.</p>
       </div>
       <dl class="fact-list">
-        <div><dt>konum</dt><dd>Varşova, Polonya</dd></div>
-        <div><dt>eğitim</dt><dd>Vizja Üniversitesi, 2021–2026</dd></div>
-        <div><dt>odak</dt><dd>Mobil &amp; Backend</dd></div>
-        <div><dt>diller</dt><dd>Türkçe (ana dil), İngilizce (B2)</dd></div>
-        <div><dt>github</dt><dd>emrkaratekin</dd></div>
+        <div><dt data-i18n="fact-location-label">konum</dt><dd data-i18n="fact-location-value">Varşova, Polonya</dd></div>
+        <div><dt data-i18n="fact-edu-label">eğitim</dt><dd data-i18n="fact-edu-value">Vizja Üniversitesi, 2021–2026</dd></div>
+        <div><dt data-i18n="fact-focus-label">odak</dt><dd data-i18n="fact-focus-value">Mobil &amp; Backend</dd></div>
+        <div><dt data-i18n="fact-lang-label">diller</dt><dd data-i18n="fact-lang-value">Türkçe (ana dil), İngilizce (B2)</dd></div>
+        <div><dt data-i18n="fact-github-label">github</dt><dd>emrkaratekin</dd></div>
       </dl>
     </div>
   </section>
 
   <section id="deneyim">
     <div class="node" style="top:76px;"></div>
-    <p class="tag">// deneyim</p>
-    <h2 class="title">İş Deneyimi</h2>
+    <p class="tag" data-i18n="exp-tag">// deneyim</p>
+    <h2 class="title" data-i18n="exp-title">İş Deneyimi</h2>
     <div class="timeline reveal">
       <div class="tl-item">
         <div class="tl-period">2023 — 2025</div>
-        <h3 class="tl-role">Dijital Proje &amp; Web Geliştirme Stajyeri</h3>
-        <p class="tl-org">MOBAD (Mobile Adventure Sp. z o.o.), Varşova</p>
+        <h3 class="tl-role" data-i18n="exp1-role">Dijital Proje &amp; Web Geliştirme Stajyeri</h3>
+        <p class="tl-org">MOBAD (Mobile Adventure Sp. z o.o.), <span data-i18n="hero-location">Varşova, Polonya</span></p>
         <ul>
-          <li>Erasmus+ ve Avrupa Birliği tarafından desteklenen SPARTA, FutureCoach ve PRO-SECURE projelerine katkı sağladı.</li>
-          <li>SPARTA siber güvenlik eğitim platformunun hem web hem mobil uygulama tarafında eğitim modülleri, değerlendirme araçları ve çok dilli içerik geliştirdi.</li>
-          <li>FutureCoach mobil uygulamasında kişiselleştirilmiş öğrenme modülleri, ilerleme takibi ve erişilebilirlik çalışmalarına destek verdi.</li>
-          <li>PRO-SECURE senaryo tabanlı e-öğrenme platformunda etkileşimli, çok dilli modüller geliştirdi.</li>
-          <li>Proje web sitelerinin geliştirilmesi ve bakımına destek oldu; kullanılabilirlik testleri yürüterek sorunları geliştirme ekibine raporladı.</li>
+          <li data-i18n="exp1-b1">Erasmus+ ve Avrupa Birliği tarafından desteklenen SPARTA, FutureCoach ve PRO-SECURE projelerine katkı sağladı.</li>
+          <li data-i18n="exp1-b2">SPARTA siber güvenlik eğitim platformunun hem web hem mobil uygulama tarafında eğitim modülleri, değerlendirme araçları ve çok dilli içerik geliştirdi.</li>
+          <li data-i18n="exp1-b3">FutureCoach mobil uygulamasında kişiselleştirilmiş öğrenme modülleri, ilerleme takibi ve erişilebilirlik çalışmalarına destek verdi.</li>
+          <li data-i18n="exp1-b4">PRO-SECURE senaryo tabanlı e-öğrenme platformunda etkileşimli, çok dilli modüller geliştirdi.</li>
+          <li data-i18n="exp1-b5">Proje web sitelerinin geliştirilmesi ve bakımına destek oldu; kullanılabilirlik testleri yürüterek sorunları geliştirme ekibine raporladı.</li>
         </ul>
       </div>
       <div class="tl-item">
         <div class="tl-period">2021 — 2022</div>
-        <h3 class="tl-role">IT Destek Stajyeri</h3>
-        <p class="tl-org">Polisan Boya Holding, Türkiye</p>
+        <h3 class="tl-role" data-i18n="exp2-role">IT Destek Stajyeri</h3>
+        <p class="tl-org" data-i18n="exp2-org">Polisan Boya Holding, Türkiye</p>
         <ul>
-          <li>Donanım, yazılım ve bağlantı sorunları için birinci seviye teknik destek sağladı.</li>
-          <li>İnternet kesintileri, ağ erişim sorunları ve iletişim hattı problemlerini teşhis edip çözdü.</li>
-          <li>Tekrarlayan teknik sorunları belgeleyerek ilgili IT personeline iletti.</li>
+          <li data-i18n="exp2-b1">Donanım, yazılım ve bağlantı sorunları için birinci seviye teknik destek sağladı.</li>
+          <li data-i18n="exp2-b2">İnternet kesintileri, ağ erişim sorunları ve iletişim hattı problemlerini teşhis edip çözdü.</li>
+          <li data-i18n="exp2-b3">Tekrarlayan teknik sorunları belgeleyerek ilgili IT personeline iletti.</li>
         </ul>
       </div>
     </div>
@@ -492,11 +534,11 @@
 
   <section id="yetenekler">
     <div class="node" style="top:76px;"></div>
-    <p class="tag">// yetenekler</p>
-    <h2 class="title">Teknik Yetenekler</h2>
+    <p class="tag" data-i18n="skills-tag">// yetenekler</p>
+    <h2 class="title" data-i18n="skills-title">Teknik Yetenekler</h2>
     <div class="skill-groups reveal">
       <div class="skill-card">
-        <h3>Diller &amp; Framework</h3>
+        <h3 data-i18n="skill-cat1">Diller &amp; Framework</h3>
         <div class="chip-row">
           <span class="chip">Java</span>
           <span class="chip">Kotlin</span>
@@ -506,14 +548,14 @@
         </div>
       </div>
       <div class="skill-card">
-        <h3>Veritabanı</h3>
+        <h3 data-i18n="skill-cat2">Veritabanı</h3>
         <div class="chip-row">
           <span class="chip">SQL</span>
           <span class="chip">PostgreSQL</span>
         </div>
       </div>
       <div class="skill-card">
-        <h3>Web</h3>
+        <h3 data-i18n="skill-cat3">Web</h3>
         <div class="chip-row">
           <span class="chip">HTML</span>
           <span class="chip">CSS</span>
@@ -523,13 +565,13 @@
         </div>
       </div>
       <div class="skill-card">
-        <h3>Araçlar</h3>
+        <h3 data-i18n="skill-cat4">Araçlar</h3>
         <div class="chip-row">
           <span class="chip">Git &amp; GitHub</span>
           <span class="chip">Docker</span>
           <span class="chip">Postman</span>
           <span class="chip">Figma</span>
-          <span class="chip">Mobil Test</span>
+          <span class="chip" data-i18n="skill-mobiletest">Mobil Test</span>
         </div>
       </div>
     </div>
@@ -537,57 +579,57 @@
 
   <section id="projeler">
     <div class="node" style="top:76px;"></div>
-    <p class="tag">// projeler</p>
-    <h2 class="title">AB Projeleri &amp; Kişisel Çalışmalar</h2>
+    <p class="tag" data-i18n="proj-tag">// projeler</p>
+    <h2 class="title" data-i18n="proj-title">AB Projeleri &amp; Kişisel Çalışmalar</h2>
     <div class="proj-grid reveal">
       <div class="proj-card">
         <div class="proj-top">
           <h3>SPARTA</h3>
           <span class="badge">2024–2026</span>
         </div>
-        <p>Sporcu koçları için siber güvenlik eğitim platformu. Eğitim modülleri, değerlendirme araçları ve simülasyon egzersizleri içeren web ve mobil uygulama.</p>
-        <a class="link" href="https://mobad.pl/project/sparta/" target="_blank" rel="noopener">projeyi görüntüle →</a>
+        <p data-i18n="proj1-desc">Sporcu koçları için siber güvenlik eğitim platformu. Eğitim modülleri, değerlendirme araçları ve simülasyon egzersizleri içeren web ve mobil uygulama.</p>
+        <a class="link" href="https://mobad.pl/project/sparta/" target="_blank" rel="noopener"><span data-i18n="proj-link">projeyi görüntüle →</span></a>
       </div>
       <div class="proj-card">
         <div class="proj-top">
           <h3>FutureCoach</h3>
           <span class="badge">good practice</span>
         </div>
-        <p>Sporcu koçları için kişiselleştirilmiş öğrenme modülleri, bilgi değerlendirmeleri ve ilerleme takibi sunan mobil uygulama. Avrupa Komisyonu tarafından ödüllendirildi.</p>
-        <a class="link" href="https://mobad.pl/project/futurecoach/" target="_blank" rel="noopener">projeyi görüntüle →</a>
+        <p data-i18n="proj2-desc">Sporcu koçları için kişiselleştirilmiş öğrenme modülleri, bilgi değerlendirmeleri ve ilerleme takibi sunan mobil uygulama. Avrupa Komisyonu tarafından ödüllendirildi.</p>
+        <a class="link" href="https://mobad.pl/project/futurecoach/" target="_blank" rel="noopener"><span data-i18n="proj-link">projeyi görüntüle →</span></a>
       </div>
       <div class="proj-card">
         <div class="proj-top">
           <h3>PRO-SECURE</h3>
           <span class="badge">good practice</span>
         </div>
-        <p>Göçmen ve mülteci ebeveynler için dijital güvenlik konulu, senaryo tabanlı, çok dilli e-öğrenme platformu. Avrupa Komisyonu tarafından ödüllendirildi.</p>
-        <a class="link" href="https://mobad.pl/project/pro-secure/" target="_blank" rel="noopener">projeyi görüntüle →</a>
+        <p data-i18n="proj3-desc">Göçmen ve mülteci ebeveynler için dijital güvenlik konulu, senaryo tabanlı, çok dilli e-öğrenme platformu. Avrupa Komisyonu tarafından ödüllendirildi.</p>
+        <a class="link" href="https://mobad.pl/project/pro-secure/" target="_blank" rel="noopener"><span data-i18n="proj-link">projeyi görüntüle →</span></a>
       </div>
       <div class="proj-card">
         <div class="proj-top">
           <h3>VitalSync</h3>
-          <span class="badge">kişisel</span>
+          <span class="badge" data-i18n="proj-personal">kişisel</span>
         </div>
-        <p>Diyet takibi ve sağlıklı yaşam alışkanlıkları için geliştirilen mobil uygulama.</p>
+        <p data-i18n="proj4-desc">Diyet takibi ve sağlıklı yaşam alışkanlıkları için geliştirilen mobil uygulama.</p>
       </div>
     </div>
     <div class="mini-projects reveal">
-      <div class="mini-card">Hero Camera<br>Application</div>
+      <div class="mini-card" data-i18n="mini1">Hero Camera Application</div>
       <div class="mini-card">DisasterWatch</div>
-      <div class="mini-card">Currency Exchange<br>Application</div>
-      <div class="mini-card">GitHub<br>@emrkaratekin</div>
+      <div class="mini-card" data-i18n="mini3">Currency Exchange Application</div>
+      <div class="mini-card" data-i18n="mini4">GitHub @emrkaratekin</div>
     </div>
   </section>
 
   <section id="iletisim">
     <div class="node" style="top:76px;"></div>
-    <p class="tag">// iletişim</p>
+    <p class="tag" data-i18n="contact-tag">// iletişim</p>
     <div class="contact-box reveal">
-      <h2>Birlikte çalışalım</h2>
-      <p>Junior Software Engineer pozisyonları veya iş birlikleri için benimle iletişime geçebilirsiniz.</p>
+      <h2 data-i18n="contact-title">Birlikte çalışalım</h2>
+      <p data-i18n="contact-desc">Junior Software Engineer pozisyonları veya iş birlikleri için benimle iletişime geçebilirsiniz.</p>
       <div class="contact-links">
-        <a class="btn primary" href="mailto:emirkaratekin96@gmail.com">e-posta gönder</a>
+        <a class="btn primary" href="mailto:emirkaratekin96@gmail.com" data-i18n="contact-email-btn">e-posta gönder</a>
         <a class="btn" href="tel:+48797037087">+48 797 037 087</a>
         <a class="btn" href="https://www.linkedin.com/in/emir-karatekin" target="_blank" rel="noopener">linkedin</a>
         <a class="btn" href="https://github.com/emrkaratekin" target="_blank" rel="noopener">github</a>
@@ -596,9 +638,164 @@
   </section>
 </div>
 
-<footer>© 2026 Emir Karatekin — Varşova, Polonya</footer>
+<footer data-i18n="footer-text">© 2026 Emir Karatekin — Varşova, Polonya</footer>
 
 <script>
+  const translations = {
+    tr: {
+      "nav-about":"hakkımda","nav-exp":"deneyim","nav-skills":"yetenekler","nav-projects":"projeler","nav-contact":"iletişim",
+      "hero-eyebrow":"software engineer / mobile & backend",
+      "hero-desc":"Mobil ve backend sistemler kuran, ölçeklenebilir yazılım mimarileri üzerine çalışan yeni mezun bir yazılım mühendisi. Erasmus+ kapsamındaki Avrupa Birliği projelerinde web ve mobil uygulamalar geliştirdi.",
+      "hero-location":"Varşova, Polonya",
+      "hero-cta-primary":"projelere göz at",
+      "hero-cta-secondary":"iletişime geç",
+      "about-tag":"// hakkımda",
+      "about-title":"Sistemleri uçtan uca kurmayı seviyorum",
+      "about-p1":"Vizja Üniversitesi'nde <strong>Bilgisayar Mühendisliği, Mobil Uygulama Tasarımı</strong> alanında eğitimimi sürdürüyorum. Java, Kotlin, Spring Boot, React Native, SQL ve Git ile akademik ve kişisel projeler geliştirdim.",
+      "about-p2":"Ölçeklenebilir uygulamalar kurmaya, güncel teknolojileri öğrenmeye ve yazılım geliştirme becerilerimi sürekli geliştirmeye tutkuyla bağlıyım. Şu anda katkı sağlayıp aynı zamanda gelişebileceğim bir <strong>Junior Software Engineer</strong> pozisyonu arıyorum.",
+      "fact-location-label":"konum","fact-location-value":"Varşova, Polonya",
+      "fact-edu-label":"eğitim","fact-edu-value":"Vizja Üniversitesi, 2021–2026",
+      "fact-focus-label":"odak","fact-focus-value":"Mobil & Backend",
+      "fact-lang-label":"diller","fact-lang-value":"Türkçe (ana dil), İngilizce (B2)",
+      "fact-github-label":"github",
+      "exp-tag":"// deneyim","exp-title":"İş Deneyimi",
+      "exp1-role":"Dijital Proje & Web Geliştirme Stajyeri",
+      "exp1-b1":"Erasmus+ ve Avrupa Birliği tarafından desteklenen SPARTA, FutureCoach ve PRO-SECURE projelerine katkı sağladı.",
+      "exp1-b2":"SPARTA siber güvenlik eğitim platformunun hem web hem mobil uygulama tarafında eğitim modülleri, değerlendirme araçları ve çok dilli içerik geliştirdi.",
+      "exp1-b3":"FutureCoach mobil uygulamasında kişiselleştirilmiş öğrenme modülleri, ilerleme takibi ve erişilebilirlik çalışmalarına destek verdi.",
+      "exp1-b4":"PRO-SECURE senaryo tabanlı e-öğrenme platformunda etkileşimli, çok dilli modüller geliştirdi.",
+      "exp1-b5":"Proje web sitelerinin geliştirilmesi ve bakımına destek oldu; kullanılabilirlik testleri yürüterek sorunları geliştirme ekibine raporladı.",
+      "exp2-role":"IT Destek Stajyeri","exp2-org":"Polisan Boya Holding, Türkiye",
+      "exp2-b1":"Donanım, yazılım ve bağlantı sorunları için birinci seviye teknik destek sağladı.",
+      "exp2-b2":"İnternet kesintileri, ağ erişim sorunları ve iletişim hattı problemlerini teşhis edip çözdü.",
+      "exp2-b3":"Tekrarlayan teknik sorunları belgeleyerek ilgili IT personeline iletti.",
+      "skills-tag":"// yetenekler","skills-title":"Teknik Yetenekler",
+      "skill-cat1":"Diller & Framework","skill-cat2":"Veritabanı","skill-cat3":"Web","skill-cat4":"Araçlar",
+      "skill-mobiletest":"Mobil Test",
+      "proj-tag":"// projeler","proj-title":"AB Projeleri & Kişisel Çalışmalar",
+      "proj1-desc":"Sporcu koçları için siber güvenlik eğitim platformu. Eğitim modülleri, değerlendirme araçları ve simülasyon egzersizleri içeren web ve mobil uygulama.",
+      "proj2-desc":"Sporcu koçları için kişiselleştirilmiş öğrenme modülleri, bilgi değerlendirmeleri ve ilerleme takibi sunan mobil uygulama. Avrupa Komisyonu tarafından ödüllendirildi.",
+      "proj3-desc":"Göçmen ve mülteci ebeveynler için dijital güvenlik konulu, senaryo tabanlı, çok dilli e-öğrenme platformu. Avrupa Komisyonu tarafından ödüllendirildi.",
+      "proj4-desc":"Diyet takibi ve sağlıklı yaşam alışkanlıkları için geliştirilen mobil uygulama.",
+      "proj-link":"projeyi görüntüle →","proj-personal":"kişisel",
+      "mini1":"Hero Camera Application","mini3":"Currency Exchange Application","mini4":"GitHub @emrkaratekin",
+      "contact-tag":"// iletişim","contact-title":"Birlikte çalışalım",
+      "contact-desc":"Junior Software Engineer pozisyonları veya iş birlikleri için benimle iletişime geçebilirsiniz.",
+      "contact-email-btn":"e-posta gönder",
+      "footer-text":"© 2026 Emir Karatekin — Varşova, Polonya"
+    },
+    en: {
+      "nav-about":"about","nav-exp":"experience","nav-skills":"skills","nav-projects":"projects","nav-contact":"contact",
+      "hero-eyebrow":"software engineer / mobile & backend",
+      "hero-desc":"A recent graduate software engineer building mobile and backend systems, focused on scalable software architecture. Developed web and mobile applications for Erasmus+ funded European Union projects.",
+      "hero-location":"Warsaw, Poland",
+      "hero-cta-primary":"view projects",
+      "hero-cta-secondary":"get in touch",
+      "about-tag":"// about",
+      "about-title":"I like building systems end to end",
+      "about-p1":"Currently studying <strong>Computer Science, Mobile Application Design</strong> at Vizja University. Built academic and personal projects with Java, Kotlin, Spring Boot, React Native, SQL and Git.",
+      "about-p2":"Passionate about building scalable applications, learning current technologies, and continuously improving my software development skills. Looking for a <strong>Junior Software Engineer</strong> role where I can contribute and keep growing.",
+      "fact-location-label":"location","fact-location-value":"Warsaw, Poland",
+      "fact-edu-label":"education","fact-edu-value":"Vizja University, 2021–2026",
+      "fact-focus-label":"focus","fact-focus-value":"Mobile & Backend",
+      "fact-lang-label":"languages","fact-lang-value":"Turkish (native), English (B2)",
+      "fact-github-label":"github",
+      "exp-tag":"// experience","exp-title":"Work Experience",
+      "exp1-role":"Digital Project & Web Development Intern",
+      "exp1-b1":"Contributed to the SPARTA, FutureCoach and PRO-SECURE projects, funded by Erasmus+ and the European Union.",
+      "exp1-b2":"Built training modules, assessment tools and multilingual content for both the web and mobile app of the SPARTA cybersecurity training platform.",
+      "exp1-b3":"Supported personalized learning modules, progress tracking and accessibility work on the FutureCoach mobile app.",
+      "exp1-b4":"Developed interactive, multilingual modules for the scenario-based PRO-SECURE e-learning platform.",
+      "exp1-b5":"Supported the development and maintenance of project websites; ran usability tests and reported issues to the development team.",
+      "exp2-role":"IT Support Intern","exp2-org":"Polisan Boya Holding, Turkey",
+      "exp2-b1":"Provided first-level technical support for hardware, software and connectivity issues.",
+      "exp2-b2":"Diagnosed and resolved internet outages, network access issues and communication line problems.",
+      "exp2-b3":"Documented recurring technical issues and reported unresolved ones to the relevant IT staff.",
+      "skills-tag":"// skills","skills-title":"Technical Skills",
+      "skill-cat1":"Languages & Frameworks","skill-cat2":"Database","skill-cat3":"Web","skill-cat4":"Tools",
+      "skill-mobiletest":"Mobile Testing",
+      "proj-tag":"// projects","proj-title":"EU Projects & Personal Work",
+      "proj1-desc":"Cybersecurity training platform for sports coaches. Web and mobile app with training modules, assessment tools and simulated exercises.",
+      "proj2-desc":"Mobile app with personalized learning modules, knowledge assessments and progress tracking for sports coaches. Awarded by the European Commission.",
+      "proj3-desc":"Scenario-based, multilingual e-learning platform on digital safety for immigrant and refugee parents. Awarded by the European Commission.",
+      "proj4-desc":"Mobile app for diet tracking and healthy lifestyle habits.",
+      "proj-link":"view project →","proj-personal":"personal",
+      "mini1":"Hero Camera Application","mini3":"Currency Exchange Application","mini4":"GitHub @emrkaratekin",
+      "contact-tag":"// contact","contact-title":"Let's work together",
+      "contact-desc":"Feel free to reach out for Junior Software Engineer roles or collaborations.",
+      "contact-email-btn":"send email",
+      "footer-text":"© 2026 Emir Karatekin — Warsaw, Poland"
+    },
+    pl: {
+      "nav-about":"o mnie","nav-exp":"doświadczenie","nav-skills":"umiejętności","nav-projects":"projekty","nav-contact":"kontakt",
+      "hero-eyebrow":"software engineer / mobile & backend",
+      "hero-desc":"Absolwent informatyki budujący systemy mobilne i backendowe, skupiony na skalowalnej architekturze oprogramowania. Tworzył aplikacje webowe i mobilne w ramach projektów Unii Europejskiej finansowanych z programu Erasmus+.",
+      "hero-location":"Warszawa, Polska",
+      "hero-cta-primary":"zobacz projekty",
+      "hero-cta-secondary":"skontaktuj się",
+      "about-tag":"// o mnie",
+      "about-title":"Lubię budować systemy od podstaw",
+      "about-p1":"Studiuję obecnie <strong>Informatykę, specjalizację Projektowanie Aplikacji Mobilnych</strong> na Uniwersytecie Vizja. Tworzyłem projekty akademickie i osobiste z użyciem Java, Kotlin, Spring Boot, React Native, SQL i Git.",
+      "about-p2":"Pasjonuję się budowaniem skalowalnych aplikacji, poznawaniem nowych technologii i ciągłym rozwijaniem umiejętności programistycznych. Szukam stanowiska <strong>Junior Software Engineer</strong>, na którym mogę wnosić wkład i się rozwijać.",
+      "fact-location-label":"lokalizacja","fact-location-value":"Warszawa, Polska",
+      "fact-edu-label":"edukacja","fact-edu-value":"Uniwersytet Vizja, 2021–2026",
+      "fact-focus-label":"specjalizacja","fact-focus-value":"Mobile & Backend",
+      "fact-lang-label":"języki","fact-lang-value":"turecki (ojczysty), angielski (B2)",
+      "fact-github-label":"github",
+      "exp-tag":"// doświadczenie","exp-title":"Doświadczenie zawodowe",
+      "exp1-role":"Stażysta ds. projektów cyfrowych i rozwoju stron internetowych",
+      "exp1-b1":"Współtworzył projekty SPARTA, FutureCoach i PRO-SECURE, finansowane z programu Erasmus+ i Unii Europejskiej.",
+      "exp1-b2":"Tworzył moduły szkoleniowe, narzędzia oceny i wielojęzyczne treści zarówno dla aplikacji webowej, jak i mobilnej platformy szkoleniowej SPARTA w zakresie cyberbezpieczeństwa.",
+      "exp1-b3":"Wspierał spersonalizowane moduły edukacyjne, śledzenie postępów i prace nad dostępnością w aplikacji mobilnej FutureCoach.",
+      "exp1-b4":"Tworzył interaktywne, wielojęzyczne moduły dla platformy e-learningowej PRO-SECURE opartej na scenariuszach.",
+      "exp1-b5":"Wspierał rozwój i utrzymanie stron internetowych projektów; przeprowadzał testy użyteczności i raportował problemy zespołowi deweloperskiemu.",
+      "exp2-role":"Stażysta wsparcia IT","exp2-org":"Polisan Boya Holding, Turcja",
+      "exp2-b1":"Zapewniał wsparcie techniczne pierwszej linii w zakresie sprzętu, oprogramowania i połączeń.",
+      "exp2-b2":"Diagnozował i rozwiązywał problemy z internetem, dostępem do sieci i łączami komunikacyjnymi.",
+      "exp2-b3":"Dokumentował powtarzające się problemy techniczne i zgłaszał nierozwiązane sprawy odpowiedniemu personelowi IT.",
+      "skills-tag":"// umiejętności","skills-title":"Umiejętności techniczne",
+      "skill-cat1":"Języki i frameworki","skill-cat2":"Baza danych","skill-cat3":"Web","skill-cat4":"Narzędzia",
+      "skill-mobiletest":"Testowanie mobilne",
+      "proj-tag":"// projekty","proj-title":"Projekty UE i prace własne",
+      "proj1-desc":"Platforma szkoleniowa z zakresu cyberbezpieczeństwa dla trenerów sportowych. Aplikacja webowa i mobilna z modułami szkoleniowymi, narzędziami oceny i symulacjami.",
+      "proj2-desc":"Aplikacja mobilna ze spersonalizowanymi modułami edukacyjnymi, testami wiedzy i śledzeniem postępów dla trenerów sportowych. Nagrodzona przez Komisję Europejską.",
+      "proj3-desc":"Wielojęzyczna platforma e-learningowa oparta na scenariuszach, dotycząca bezpieczeństwa cyfrowego dla rodziców imigrantów i uchodźców. Nagrodzona przez Komisję Europejską.",
+      "proj4-desc":"Aplikacja mobilna do śledzenia diety i zdrowych nawyków życiowych.",
+      "proj-link":"zobacz projekt →","proj-personal":"prywatny",
+      "mini1":"Hero Camera Application","mini3":"Currency Exchange Application","mini4":"GitHub @emrkaratekin",
+      "contact-tag":"// kontakt","contact-title":"Porozmawiajmy",
+      "contact-desc":"Zapraszam do kontaktu w sprawie stanowisk Junior Software Engineer lub współpracy.",
+      "contact-email-btn":"wyślij e-mail",
+      "footer-text":"© 2026 Emir Karatekin — Warszawa, Polska"
+    }
+  };
+
+  function applyLanguage(lang){
+    const dict = translations[lang] || translations.tr;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined){
+        el.innerHTML = dict[key];
+      }
+    });
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-switch button').forEach(btn=>{
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-lang') === lang ? 'true' : 'false');
+    });
+    try{ localStorage.setItem('site-lang', lang); }catch(e){}
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLanguage(btn.getAttribute('data-lang')));
+  });
+
+  let initialLang = 'tr';
+  try{
+    const saved = localStorage.getItem('site-lang');
+    if(saved && translations[saved]) initialLang = saved;
+  }catch(e){}
+  applyLanguage(initialLang);
+
   const items = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     const io = new IntersectionObserver((entries)=>{
