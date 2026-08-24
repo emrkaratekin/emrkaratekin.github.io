@@ -60,7 +60,6 @@
     position:relative;
   }
 
-  /* ---------- Spine (signature element) ---------- */
   .spine{
     position:absolute;
     left:0;
@@ -85,7 +84,6 @@
   }
   @media(min-width:860px){ .node{display:block;} }
 
-  /* ---------- Nav ---------- */
   header.top{
     position:sticky;
     top:0;
@@ -154,7 +152,6 @@
     font-weight:500;
   }
 
-  /* ---------- Hero ---------- */
   .hero{
     padding:96px 0 88px;
     position:relative;
@@ -244,7 +241,6 @@
   .btn.primary:hover{background:#96d1ca;}
   .btn:not(.primary):hover{border-color:var(--teal); color:var(--teal);}
 
-  /* ---------- Section shell ---------- */
   section{
     padding:76px 0;
     border-top:1px solid var(--line);
@@ -272,7 +268,6 @@
   }
   .reveal.in{opacity:1; transform:translateY(0);}
 
-  /* ---------- About ---------- */
   .about-grid{
     display:grid;
     gap:34px;
@@ -299,7 +294,6 @@
   .fact-list dt{font-family:var(--mono); color:var(--ink-faint); white-space:nowrap;}
   .fact-list dd{margin:0; color:var(--ink); text-align:right;}
 
-  /* ---------- Experience ---------- */
   .timeline{position:relative; padding-left:26px; border-left:1px solid var(--line-strong);}
   .tl-item{position:relative; padding-bottom:44px;}
   .tl-item:last-child{padding-bottom:0;}
@@ -331,7 +325,6 @@
   .tl-item li{margin-bottom:7px;}
   .tl-item li::marker{color:var(--teal-dim);}
 
-  /* ---------- Skills ---------- */
   .skill-groups{
     display:grid;
     gap:26px;
@@ -357,7 +350,6 @@
     background:rgba(127,195,187,0.05);
   }
 
-  /* ---------- Projects ---------- */
   .proj-grid{display:grid; gap:22px; grid-template-columns:1fr;}
   @media(min-width:700px){ .proj-grid{grid-template-columns:1fr 1fr;} }
   .proj-card{
@@ -410,7 +402,48 @@
     text-align:center;
   }
 
-  /* ---------- Contact ---------- */
+  .eu-heading{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-faint);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin:56px 0 22px;
+    padding-top:40px;
+    border-top:1px solid var(--line);
+  }
+  .feat-grid{display:grid; gap:24px; grid-template-columns:1fr;}
+  @media(min-width:760px){ .feat-grid{grid-template-columns:repeat(3,1fr);} }
+  .feat-card{
+    border:1px solid var(--line);
+    background:var(--navy-mid);
+    padding:22px 22px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    transition:border-color .2s, transform .2s;
+  }
+  .feat-card:hover{border-color:var(--teal-dim); transform:translateY(-2px);}
+  .feat-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+  .feat-card h3{font-family:var(--display); font-size:16.5px; margin:0; font-weight:600;}
+  .feat-card p.desc{margin:0; color:var(--ink-dim); font-size:13.5px;}
+  .feat-chips{display:flex; flex-wrap:wrap; gap:6px;}
+  .feat-chip{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--ink-faint);
+    border:1px solid var(--line);
+    padding:3px 8px;
+  }
+  .feat-card a.link{
+    margin-top:auto;
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--teal);
+    text-decoration:none;
+  }
+  .feat-card a.link:hover{text-decoration:underline;}
+
   .contact-box{
     border:1px solid var(--line-strong);
     background:var(--navy-mid);
@@ -580,7 +613,55 @@
   <section id="projects">
     <div class="node" style="top:76px;"></div>
     <p class="tag" data-i18n="proj-tag">// projects</p>
-    <h2 class="title" data-i18n="proj-title">EU Projects &amp; Personal Work</h2>
+    <h2 class="title" data-i18n="proj-title">Full-Stack Projects</h2>
+
+    <div class="feat-grid reveal">
+      <div class="feat-card">
+        <div class="feat-top">
+          <h3>Roster</h3>
+          <span class="badge" data-i18n="feat-badge-rebuild">rebuild</span>
+        </div>
+        <p class="desc" data-i18n="feat1-desc">Employee management system rebuilt from a Java Swing desktop app into a Spring Boot REST API with a React dashboard — JWT auth, bcrypt password hashing, role-scoped access.</p>
+        <div class="feat-chips">
+          <span class="feat-chip">Spring Boot</span>
+          <span class="feat-chip">React</span>
+          <span class="feat-chip">MySQL</span>
+          <span class="feat-chip">JWT</span>
+        </div>
+        <a class="link" href="https://github.com/emrkaratekin/spring-boot-react-employee-management" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <h3>Draw</h3>
+          <span class="badge" data-i18n="feat-badge-rebuild">rebuild</span>
+        </div>
+        <p class="desc" data-i18n="feat2-desc">A random prize-draw tool rebuilt from a Java Swing app that could freeze on small entry lists. The new version validates the winner count server-side and reveals winners one at a time with a confetti animation.</p>
+        <div class="feat-chips">
+          <span class="feat-chip">Spring Boot</span>
+          <span class="feat-chip">React</span>
+          <span class="feat-chip">REST API</span>
+        </div>
+        <a class="link" href="https://github.com/emrkaratekin/spring-boot-react-raffle-draw" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <h3>Meridian</h3>
+          <span class="badge" data-i18n="feat-badge-rebuild">rebuild</span>
+        </div>
+        <p class="desc" data-i18n="feat3-desc">A three-role hospital appointment system (chief physician, doctor, patient), rebuilt from a Java Swing app that stored passwords in plain text and built SQL with string concatenation. Now: bcrypt, JPA parameter binding, and role-based access control on every endpoint.</p>
+        <div class="feat-chips">
+          <span class="feat-chip">Spring Boot</span>
+          <span class="feat-chip">React</span>
+          <span class="feat-chip">MySQL</span>
+          <span class="feat-chip">JWT</span>
+        </div>
+        <a class="link" href="https://github.com/emrkaratekin/hospital-appointment-system" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
+      </div>
+    </div>
+
+    <p class="eu-heading" data-i18n="eu-heading">// eu-funded projects &amp; personal work</p>
     <div class="proj-grid reveal">
       <div class="proj-card">
         <div class="proj-top">
@@ -672,7 +753,12 @@
       "skills-tag":"// skills","skills-title":"Technical Skills",
       "skill-cat1":"Languages & Frameworks","skill-cat2":"Database","skill-cat3":"Web","skill-cat4":"Tools",
       "skill-mobiletest":"Mobile Testing",
-      "proj-tag":"// projects","proj-title":"EU Projects & Personal Work",
+      "proj-tag":"// projects","proj-title":"Full-Stack Projects",
+      "eu-heading":"// eu-funded projects & personal work",
+      "feat-badge-rebuild":"rebuild",
+      "feat1-desc":"Employee management system rebuilt from a Java Swing desktop app into a Spring Boot REST API with a React dashboard — JWT auth, bcrypt password hashing, role-scoped access.",
+      "feat2-desc":"A random prize-draw tool rebuilt from a Java Swing app that could freeze on small entry lists. The new version validates the winner count server-side and reveals winners one at a time with a confetti animation.",
+      "feat3-desc":"A three-role hospital appointment system (chief physician, doctor, patient), rebuilt from a Java Swing app that stored passwords in plain text and built SQL with string concatenation. Now: bcrypt, JPA parameter binding, and role-based access control on every endpoint.",
       "proj1-desc":"Cybersecurity training platform for sports coaches. Web and mobile app with training modules, assessment tools and simulated exercises.",
       "proj2-desc":"Mobile app with personalized learning modules, knowledge assessments and progress tracking for sports coaches. Awarded by the European Commission.",
       "proj3-desc":"Scenario-based, multilingual e-learning platform on digital safety for immigrant and refugee parents. Awarded by the European Commission.",
@@ -714,7 +800,12 @@
       "skills-tag":"// fähigkeiten","skills-title":"Technische Fähigkeiten",
       "skill-cat1":"Sprachen & Frameworks","skill-cat2":"Datenbank","skill-cat3":"Web","skill-cat4":"Werkzeuge",
       "skill-mobiletest":"Mobile Tests",
-      "proj-tag":"// projekte","proj-title":"EU-Projekte & Eigene Arbeiten",
+      "proj-tag":"// projekte","proj-title":"Full-Stack-Projekte",
+      "eu-heading":"// eu-geförderte projekte & eigene arbeiten",
+      "feat-badge-rebuild":"neu aufgebaut",
+      "feat1-desc":"Mitarbeiterverwaltungssystem, das von einer Java-Swing-Desktop-App in eine Spring-Boot-REST-API mit React-Dashboard umgebaut wurde — JWT-Authentifizierung, bcrypt-Passwort-Hashing, rollenbasierter Zugriff.",
+      "feat2-desc":"Ein Tool für zufällige Gewinnerziehungen, neu aufgebaut aus einer Java-Swing-App, die bei kleinen Teilnehmerlisten einfrieren konnte. Die neue Version validiert die Gewinneranzahl serverseitig und zeigt Gewinner nacheinander mit einer Konfetti-Animation an.",
+      "feat3-desc":"Ein Krankenhaus-Terminsystem mit drei Rollen (Chefarzt, Arzt, Patient), neu aufgebaut aus einer Java-Swing-App, die Passwörter im Klartext speicherte und SQL per String-Verkettung baute. Jetzt: bcrypt, JPA-Parameterbindung und rollenbasierte Zugriffskontrolle bei jedem Endpunkt.",
       "proj1-desc":"Cybersicherheits-Schulungsplattform für Sporttrainer. Web- und mobile App mit Schulungsmodulen, Bewertungstools und simulierten Übungen.",
       "proj2-desc":"Mobile App mit personalisierten Lernmodulen, Wissenstests und Fortschrittsverfolgung für Sporttrainer. Von der Europäischen Kommission ausgezeichnet.",
       "proj3-desc":"Szenariobasierte, mehrsprachige E-Learning-Plattform zur digitalen Sicherheit für Einwanderer- und Flüchtlingseltern. Von der Europäischen Kommission ausgezeichnet.",
@@ -756,7 +847,12 @@
       "skills-tag":"// umiejętności","skills-title":"Umiejętności techniczne",
       "skill-cat1":"Języki i frameworki","skill-cat2":"Baza danych","skill-cat3":"Web","skill-cat4":"Narzędzia",
       "skill-mobiletest":"Testowanie mobilne",
-      "proj-tag":"// projekty","proj-title":"Projekty UE i prace własne",
+      "proj-tag":"// projekty","proj-title":"Projekty Full-Stack",
+      "eu-heading":"// projekty finansowane przez ue i prace własne",
+      "feat-badge-rebuild":"przebudowa",
+      "feat1-desc":"System zarządzania pracownikami przebudowany z aplikacji desktopowej Java Swing na REST API w Spring Boot z panelem React — uwierzytelnianie JWT, hashowanie haseł bcrypt, dostęp oparty na rolach.",
+      "feat2-desc":"Narzędzie do losowania nagród przebudowane z aplikacji Java Swing, która mogła zawiesić się przy małej liczbie uczestników. Nowa wersja waliduje liczbę zwycięzców po stronie serwera i ujawnia zwycięzców pojedynczo z animacją konfetti.",
+      "feat3-desc":"System rezerwacji wizyt szpitalnych z trzema rolami (ordynator, lekarz, pacjent), przebudowany z aplikacji Java Swing, która przechowywała hasła jawnym tekstem i budowała zapytania SQL przez konkatenację ciągów. Teraz: bcrypt, wiązanie parametrów JPA i kontrola dostępu oparta na rolach na każdym endpoincie.",
       "proj1-desc":"Platforma szkoleniowa z zakresu cyberbezpieczeństwa dla trenerów sportowych. Aplikacja webowa i mobilna z modułami szkoleniowymi, narzędziami oceny i symulacjami.",
       "proj2-desc":"Aplikacja mobilna ze spersonalizowanymi modułami edukacyjnymi, testami wiedzy i śledzeniem postępów dla trenerów sportowych. Nagrodzona przez Komisję Europejską.",
       "proj3-desc":"Wielojęzyczna platforma e-learningowa oparta na scenariuszach, dotycząca bezpieczeństwa cyfrowego dla rodziców imigrantów i uchodźców. Nagrodzona przez Komisję Europejską.",
