@@ -451,7 +451,7 @@
   }
 
   .proj-grid{display:grid; gap:22px; grid-template-columns:1fr;}
-  @media(min-width:700px){ .proj-grid{grid-template-columns:1fr 1fr;} }
+  @media(min-width:640px){ .proj-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));} }
   .proj-card{
     border:1px solid var(--line);
     background:var(--navy-mid);
@@ -610,7 +610,7 @@
         <!-- PHOTO GOES HERE: replace the line below with
              <img class="avatar-mono" src="photo.jpg" alt="Emir Karatekin">
              (put photo.jpg in the same folder as this HTML file) -->
-       <img class="avatar-mono" src="photo.jpg" alt="Emir Karatekin">
+        <div class="avatar-mono" aria-hidden="true">EK</div>
         <p class="avatar-caption"><strong>Emir Karatekin</strong><span data-i18n="avatar-role">software engineer</span></p>
       </div>
     </div>
@@ -812,6 +812,22 @@
         </div>
         <a class="link" href="https://github.com/emrkaratekin/moto-service-manager" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
       </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <h3>VitalSync</h3>
+          <span class="badge" data-i18n="feat-badge-ai">ai-powered</span>
+        </div>
+        <p class="desc" data-i18n="feat5-desc">An AI-driven health and fitness ecosystem: a generative-AI diet and workout planner tuned to your biometrics and goals, plus a computer-vision food scanner that turns a camera photo into calories, macros and a 1–10 health score — with a BMI/BMR/TDEE dashboard, hydration tracking, a 175+ item grocery catalog, and full EN/TR/PL localization.</p>
+        <div class="feat-chips">
+          <span class="feat-chip">React</span>
+          <span class="feat-chip">FastAPI</span>
+          <span class="feat-chip">SQLite</span>
+          <span class="feat-chip">Docker</span>
+          <span class="feat-chip">OpenRouter AI</span>
+        </div>
+        <a class="link" href="https://github.com/emrkaratekin/VitalSync---Diet-Healthy-Life-Application" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
+      </div>
     </div>
 
     <p class="eu-heading" data-i18n="eu-heading">// eu-funded projects &amp; personal work</p>
@@ -839,14 +855,6 @@
         </div>
         <p data-i18n="proj3-desc">Scenario-based, multilingual e-learning platform on digital safety for immigrant and refugee parents. Awarded by the European Commission.</p>
         <a class="link" href="https://mobad.pl/project/pro-secure/" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
-      </div>
-      <div class="proj-card">
-        <div class="proj-top">
-          <h3>VitalSync</h3>
-          <span class="badge" data-i18n="proj-personal">personal</span>
-        </div>
-        <p data-i18n="proj4-desc">Mobile app for diet tracking and healthy lifestyle habits.</p>
-        <a class="link" href="https://github.com/emrkaratekin/VitalSync---Diet-Healthy-Life-Application" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
       </div>
     </div>
     <div class="mini-projects reveal">
@@ -919,11 +927,12 @@
       "feat2-desc":"A random prize-draw tool rebuilt from a Java Swing app that could freeze on small entry lists. The new version validates the winner count server-side and reveals winners one at a time with a confetti animation.",
       "feat3-desc":"A three-role hospital appointment system (chief physician, doctor, patient), rebuilt from a Java Swing app that stored passwords in plain text and built SQL with string concatenation. Now: bcrypt, JPA parameter binding, and role-based access control on every endpoint.",
       "feat4-desc":"A vehicle service-tracking platform for a motorcycle workshop, built as one codebase with two experiences: a JWT-protected admin dashboard where staff log categorized maintenance — parts, inspections, photos — and a login-free customer portal where owners look up full service history by license plate, request appointments and browse vehicles for sale.",
+      "feat-badge-ai":"ai-powered",
+      "feat5-desc":"An AI-driven health and fitness ecosystem: a generative-AI diet and workout planner tuned to your biometrics and goals, plus a computer-vision food scanner that turns a camera photo into calories, macros and a 1–10 health score — with a BMI/BMR/TDEE dashboard, hydration tracking, a 175+ item grocery catalog, and full EN/TR/PL localization.",
       "proj-goodpractice":"good practice",
       "proj1-desc":"Cybersecurity training platform for sports coaches. Web and mobile app with training modules, assessment tools and simulated exercises.",
       "proj2-desc":"Mobile app with personalized learning modules, knowledge assessments and progress tracking for sports coaches. Awarded by the European Commission.",
       "proj3-desc":"Scenario-based, multilingual e-learning platform on digital safety for immigrant and refugee parents. Awarded by the European Commission.",
-      "proj4-desc":"Mobile app for diet tracking and healthy lifestyle habits.",
       "proj-link":"view project →","proj-personal":"personal",
       "mini1":"Hero Camera Application","mini3":"Currency Exchange Application","mini4":"GitHub @emrkaratekin",
       "contact-tag":"// contact","contact-title":"Let's work together",
@@ -973,11 +982,12 @@
       "feat2-desc":"Ein Tool für zufällige Gewinnerziehungen, neu aufgebaut aus einer Java-Swing-App, die bei kleinen Teilnehmerlisten einfrieren konnte. Die neue Version validiert die Gewinneranzahl serverseitig und zeigt Gewinner nacheinander mit einer Konfetti-Animation an.",
       "feat3-desc":"Ein Krankenhaus-Terminsystem mit drei Rollen (Chefarzt, Arzt, Patient), neu aufgebaut aus einer Java-Swing-App, die Passwörter im Klartext speicherte und SQL per String-Verkettung baute. Jetzt: bcrypt, JPA-Parameterbindung und rollenbasierte Zugriffskontrolle bei jedem Endpunkt.",
       "feat4-desc":"Eine Service-Tracking-Plattform für eine Motorrad-Werkstatt in einer Codebasis mit zwei Erlebniswelten: ein JWT-geschütztes Admin-Dashboard, in dem das Personal kategorisierte Wartungsarbeiten — Teile, Inspektionen, Fotos — protokolliert, und ein anmeldefreies Kundenportal, in dem Fahrzeughalter per Kennzeichen die komplette Servicehistorie einsehen, Termine anfragen und Fahrzeuge zum Verkauf durchsuchen können.",
+      "feat-badge-ai":"KI-gestützt",
+      "feat5-desc":"Ein KI-gestütztes Gesundheits- und Fitness-Ökosystem: ein generativer KI-Ernährungs- und Trainingsplaner, abgestimmt auf deine Biometrie und Ziele, plus ein Computer-Vision-Lebensmittelscanner, der ein Kamerafoto in Kalorien, Makros und einen Gesundheits-Score (1–10) verwandelt — mit einem BMI/BMR/TDEE-Dashboard, Trinkwasser-Tracking, einem Lebensmittelkatalog mit über 175 Artikeln und vollständiger EN/TR/PL-Lokalisierung.",
       "proj-goodpractice":"good practice",
       "proj1-desc":"Cybersicherheits-Schulungsplattform für Sporttrainer. Web- und mobile App mit Schulungsmodulen, Bewertungstools und simulierten Übungen.",
       "proj2-desc":"Mobile App mit personalisierten Lernmodulen, Wissenstests und Fortschrittsverfolgung für Sporttrainer. Von der Europäischen Kommission ausgezeichnet.",
       "proj3-desc":"Szenariobasierte, mehrsprachige E-Learning-Plattform zur digitalen Sicherheit für Einwanderer- und Flüchtlingseltern. Von der Europäischen Kommission ausgezeichnet.",
-      "proj4-desc":"Mobile App zur Ernährungsverfolgung und für gesunde Lebensgewohnheiten.",
       "proj-link":"projekt ansehen →","proj-personal":"privat",
       "mini1":"Hero Camera Application","mini3":"Currency Exchange Application","mini4":"GitHub @emrkaratekin",
       "contact-tag":"// kontakt","contact-title":"Lass uns zusammenarbeiten",
@@ -1027,11 +1037,12 @@
       "feat2-desc":"Narzędzie do losowania nagród przebudowane z aplikacji Java Swing, która mogła zawiesić się przy małej liczbie uczestników. Nowa wersja waliduje liczbę zwycięzców po stronie serwera i ujawnia zwycięzców pojedynczo z animacją konfetti.",
       "feat3-desc":"System rezerwacji wizyt szpitalnych z trzema rolami (ordynator, lekarz, pacjent), przebudowany z aplikacji Java Swing, która przechowywała hasła jawnym tekstem i budowała zapytania SQL przez konkatenację ciągów. Teraz: bcrypt, wiązanie parametrów JPA i kontrola dostępu oparta na rolach na każdym endpoincie.",
       "feat4-desc":"Platforma do śledzenia serwisu pojazdów dla warsztatu motocyklowego, zbudowana jako jedna baza kodu z dwoma trybami: chronionym JWT panelem administracyjnym, w którym personel loguje kategoryzowane czynności serwisowe — części, przeglądy, zdjęcia — oraz bezloginowym portalem klienta, w którym właściciele sprawdzają pełną historię serwisową po numerze rejestracyjnym, zgłaszają wizyty i przeglądają pojazdy na sprzedaż.",
+      "feat-badge-ai":"oparte na ai",
+      "feat5-desc":"Ekosystem zdrowia i fitnessu oparty na AI: generatywny planer diety i treningów dopasowany do Twojej biometrii i celów, a także skaner jedzenia oparty na widzeniu komputerowym, który zamienia zdjęcie z aparatu w kalorie, makroskładniki i ocenę zdrowotności (1–10) — wraz z panelem BMI/BMR/TDEE, śledzeniem nawodnienia, katalogiem ponad 175 produktów spożywczych i pełną lokalizacją EN/TR/PL.",
       "proj-goodpractice":"dobra praktyka",
       "proj1-desc":"Platforma szkoleniowa z zakresu cyberbezpieczeństwa dla trenerów sportowych. Aplikacja webowa i mobilna z modułami szkoleniowymi, narzędziami oceny i symulacjami.",
       "proj2-desc":"Aplikacja mobilna ze spersonalizowanymi modułami edukacyjnymi, testami wiedzy i śledzeniem postępów dla trenerów sportowych. Nagrodzona przez Komisję Europejską.",
       "proj3-desc":"Wielojęzyczna platforma e-learningowa oparta na scenariuszach, dotycząca bezpieczeństwa cyfrowego dla rodziców imigrantów i uchodźców. Nagrodzona przez Komisję Europejską.",
-      "proj4-desc":"Aplikacja mobilna do śledzenia diety i zdrowych nawyków życiowych.",
       "proj-link":"zobacz projekt →","proj-personal":"prywatny",
       "mini1":"Hero Camera Application","mini3":"Currency Exchange Application","mini4":"GitHub @emrkaratekin",
       "contact-tag":"// kontakt","contact-title":"Porozmawiajmy",
