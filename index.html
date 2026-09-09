@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emir Karatekin — Software Engineer</title>
+<title>Emir Karatekin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -52,6 +47,8 @@
     outline-offset:3px;
     border-radius:2px;
   }
+
+  img{max-width:100%;}
 
   .wrap{
     max-width:var(--edge);
@@ -174,12 +171,24 @@
     border-radius:50%;
     box-shadow:0 0 0 4px rgba(127,195,187,0.15);
   }
+
+  .hero-top{
+    display:flex;
+    flex-direction:column-reverse;
+    gap:26px;
+    align-items:flex-start;
+  }
+  @media(min-width:860px){
+    .hero-top{flex-direction:row; align-items:stretch; gap:34px;}
+  }
+
   .schema-box{
     border:1px solid var(--line-strong);
     background:var(--navy-mid);
     padding:34px 30px;
     position:relative;
     max-width:640px;
+    flex:1 1 auto;
   }
   .schema-box::before,.schema-box::after{
     content:'';
@@ -196,6 +205,7 @@
     margin:0 0 10px;
     font-weight:700;
     letter-spacing:-0.01em;
+    text-wrap:balance;
   }
   .hero .role{
     font-family:var(--mono);
@@ -209,6 +219,92 @@
     max-width:52ch;
     margin:0;
   }
+
+  .avatar-frame{
+    position:relative;
+    flex:0 0 auto;
+    width:150px;
+    border:1px solid var(--line-strong);
+    background:var(--navy-card);
+    padding:18px 16px 16px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    align-self:center;
+  }
+  @media(min-width:860px){
+    .avatar-frame{width:172px; align-self:flex-start;}
+  }
+  .avatar-frame::before,.avatar-frame::after{
+    content:'';
+    position:absolute;
+    width:9px; height:9px;
+    border:1.5px solid var(--teal-dim);
+  }
+  .avatar-frame::before{top:-5px; left:-5px;}
+  .avatar-frame::after{bottom:-5px; right:-5px;}
+  .avatar-mono{
+    width:100%;
+    aspect-ratio:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--display);
+    font-weight:700;
+    font-size:38px;
+    letter-spacing:0.02em;
+    color:var(--teal);
+    background:
+      repeating-linear-gradient(45deg, rgba(127,195,187,0.05) 0 1px, transparent 1px 9px),
+      var(--navy-mid);
+    border:1px solid var(--line);
+    object-fit:cover;
+  }
+  .avatar-caption{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    text-align:center;
+    border-top:1px dashed var(--line-strong);
+    padding-top:9px;
+    width:100%;
+  }
+  .avatar-caption strong{display:block; color:var(--ink-dim); font-weight:500; margin-bottom:2px;}
+
+  .readout{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    border:1px solid var(--line);
+    background:var(--navy-mid);
+    max-width:640px;
+  }
+  .readout-item{
+    padding:14px 18px;
+    border-left:1px dashed var(--line-strong);
+  }
+  .readout-item:first-child{border-left:none;}
+  .ro-val{
+    display:block;
+    font-family:var(--mono);
+    font-variant-numeric:tabular-nums;
+    font-size:19px;
+    color:var(--teal);
+    font-weight:500;
+  }
+  .ro-label{
+    display:block;
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-top:4px;
+  }
+
   .hero-meta{
     display:flex;
     flex-wrap:wrap;
@@ -259,6 +355,7 @@
     font-size:clamp(1.6rem,3.4vw,2.2rem);
     margin:0 0 30px;
     font-weight:600;
+    text-wrap:balance;
   }
 
   .reveal{
@@ -267,6 +364,9 @@
     transition:opacity .6s ease, transform .6s ease;
   }
   .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none;}
+  }
 
   .about-grid{
     display:grid;
@@ -314,7 +414,7 @@
     letter-spacing:0.04em;
     margin-bottom:6px;
   }
-  .tl-role{font-family:var(--display); font-size:18px; font-weight:600; margin:0 0 2px;}
+  .tl-role{font-family:var(--display); font-size:18px; font-weight:600; margin:0 0 2px; text-wrap:balance;}
   .tl-org{color:var(--ink-dim); font-size:14px; margin:0 0 14px;}
   .tl-item ul{
     margin:0;
@@ -412,8 +512,8 @@
     padding-top:40px;
     border-top:1px solid var(--line);
   }
-  .feat-grid{display:grid; gap:24px; grid-template-columns:1fr;}
-  @media(min-width:760px){ .feat-grid{grid-template-columns:repeat(3,1fr);} }
+  .feat-grid{display:grid; gap:22px; grid-template-columns:1fr;}
+  @media(min-width:640px){ .feat-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));} }
   .feat-card{
     border:1px solid var(--line);
     background:var(--navy-mid);
@@ -454,6 +554,7 @@
     font-family:var(--display);
     font-size:clamp(1.6rem,4vw,2.3rem);
     margin:0 0 12px;
+    text-wrap:balance;
   }
   .contact-box p{color:var(--ink-dim); margin:0 0 28px; font-size:15px;}
   .contact-links{
@@ -471,8 +572,6 @@
     color:var(--ink-faint);
   }
 </style>
-</head>
-<body>
 
 <header class="top">
   <div class="navrow">
@@ -500,11 +599,37 @@
   <section class="hero" id="top">
     <div class="node" style="top:96px;"></div>
     <p class="eyebrow" data-i18n="hero-eyebrow">software engineer / mobile &amp; backend</p>
-    <div class="schema-box">
-      <h1>Emir Karatekin</h1>
-      <p class="role">Java · Kotlin · Spring Boot · React Native</p>
-      <p class="desc" data-i18n="hero-desc">A recent graduate software engineer building mobile and backend systems, focused on scalable software architecture. Developed web and mobile applications for Erasmus+ funded European Union projects.</p>
+
+    <div class="hero-top">
+      <div class="schema-box">
+        <h1>Emir Karatekin</h1>
+        <p class="role">Java · Kotlin · Spring Boot · React Native</p>
+        <p class="desc" data-i18n="hero-desc">A recent graduate software engineer building mobile and backend systems, focused on scalable software architecture. Developed web and mobile applications for Erasmus+ funded European Union projects.</p>
+      </div>
+      <div class="avatar-frame">
+        <!-- PHOTO GOES HERE: replace the line below with
+             <img class="avatar-mono" src="photo.jpg" alt="Emir Karatekin">
+             (put photo.jpg in the same folder as this HTML file) -->
+        <div class="avatar-mono" aria-hidden="true">EK</div>
+        <p class="avatar-caption"><strong>Emir Karatekin</strong><span data-i18n="avatar-role">software engineer</span></p>
+      </div>
     </div>
+
+    <div class="readout reveal">
+      <div class="readout-item">
+        <span class="ro-val">18</span>
+        <span class="ro-label" data-i18n="stat-repos">repositories</span>
+      </div>
+      <div class="readout-item">
+        <span class="ro-val">03</span>
+        <span class="ro-label" data-i18n="stat-eu">EU-funded platforms</span>
+      </div>
+      <div class="readout-item">
+        <span class="ro-val">2021</span>
+        <span class="ro-label" data-i18n="stat-since">building software since</span>
+      </div>
+    </div>
+
     <div class="hero-meta">
       <span>📍 <span data-i18n="hero-location">Warsaw, Poland</span></span>
       <span>✉ emirkaratekin96@gmail.com</span>
@@ -671,6 +796,22 @@
         </div>
         <a class="link" href="https://github.com/emrkaratekin/hospital-appointment-system" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
       </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <h3>Garage</h3>
+          <span class="badge" data-i18n="feat-badge-fullstack">full-stack</span>
+        </div>
+        <p class="desc" data-i18n="feat4-desc">A vehicle service-tracking platform for a motorcycle workshop, built as one codebase with two experiences: a JWT-protected admin dashboard where staff log categorized maintenance — parts, inspections, photos — and a login-free customer portal where owners look up full service history by license plate, request appointments and browse vehicles for sale.</p>
+        <div class="feat-chips">
+          <span class="feat-chip">Java</span>
+          <span class="feat-chip">Spring Boot</span>
+          <span class="feat-chip">React</span>
+          <span class="feat-chip">MySQL</span>
+          <span class="feat-chip">JWT</span>
+        </div>
+        <a class="link" href="https://github.com/emrkaratekin/moto-service-manager" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
+      </div>
     </div>
 
     <p class="eu-heading" data-i18n="eu-heading">// eu-funded projects &amp; personal work</p>
@@ -686,7 +827,7 @@
       <div class="proj-card">
         <div class="proj-top">
           <h3>FutureCoach</h3>
-          <span class="badge">good practice</span>
+          <span class="badge" data-i18n="proj-goodpractice">good practice</span>
         </div>
         <p data-i18n="proj2-desc">Mobile app with personalized learning modules, knowledge assessments and progress tracking for sports coaches. Awarded by the European Commission.</p>
         <a class="link" href="https://mobad.pl/project/futurecoach/" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
@@ -694,7 +835,7 @@
       <div class="proj-card">
         <div class="proj-top">
           <h3>PRO-SECURE</h3>
-          <span class="badge">good practice</span>
+          <span class="badge" data-i18n="proj-goodpractice">good practice</span>
         </div>
         <p data-i18n="proj3-desc">Scenario-based, multilingual e-learning platform on digital safety for immigrant and refugee parents. Awarded by the European Commission.</p>
         <a class="link" href="https://mobad.pl/project/pro-secure/" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
@@ -705,13 +846,14 @@
           <span class="badge" data-i18n="proj-personal">personal</span>
         </div>
         <p data-i18n="proj4-desc">Mobile app for diet tracking and healthy lifestyle habits.</p>
+        <a class="link" href="https://github.com/emrkaratekin/VitalSync---Diet-Healthy-Life-Application" target="_blank" rel="noopener"><span data-i18n="proj-link">view project →</span></a>
       </div>
     </div>
     <div class="mini-projects reveal">
       <div class="mini-card" data-i18n="mini1">Hero Camera Application</div>
       <div class="mini-card">DisasterWatch</div>
       <div class="mini-card" data-i18n="mini3">Currency Exchange Application</div>
-      <div class="mini-card" data-i18n="mini4">GitHub @emrkaratekin</div>
+      <a class="mini-card" href="https://github.com/emrkaratekin" target="_blank" rel="noopener" data-i18n="mini4" style="text-decoration:none;">GitHub @emrkaratekin</a>
     </div>
   </section>
 
@@ -742,6 +884,10 @@
       "hero-location":"Warsaw, Poland",
       "hero-cta-primary":"view projects",
       "hero-cta-secondary":"get in touch",
+      "avatar-role":"software engineer",
+      "stat-repos":"repositories",
+      "stat-eu":"EU-funded platforms",
+      "stat-since":"building software since",
       "about-tag":"// about",
       "about-title":"I like building systems end to end",
       "about-p1":"Currently studying <strong>Computer Science, Mobile Application Design</strong> at Vizja University. Built academic and personal projects with Java, Kotlin, Spring Boot, React Native, SQL and Git.",
@@ -768,9 +914,12 @@
       "proj-tag":"// projects","proj-title":"Full-Stack Projects",
       "eu-heading":"// eu-funded projects & personal work",
       "feat-badge-rebuild":"rebuild",
+      "feat-badge-fullstack":"full-stack",
       "feat1-desc":"Employee management system rebuilt from a Java Swing desktop app into a Spring Boot REST API with a React dashboard — JWT auth, bcrypt password hashing, role-scoped access.",
       "feat2-desc":"A random prize-draw tool rebuilt from a Java Swing app that could freeze on small entry lists. The new version validates the winner count server-side and reveals winners one at a time with a confetti animation.",
       "feat3-desc":"A three-role hospital appointment system (chief physician, doctor, patient), rebuilt from a Java Swing app that stored passwords in plain text and built SQL with string concatenation. Now: bcrypt, JPA parameter binding, and role-based access control on every endpoint.",
+      "feat4-desc":"A vehicle service-tracking platform for a motorcycle workshop, built as one codebase with two experiences: a JWT-protected admin dashboard where staff log categorized maintenance — parts, inspections, photos — and a login-free customer portal where owners look up full service history by license plate, request appointments and browse vehicles for sale.",
+      "proj-goodpractice":"good practice",
       "proj1-desc":"Cybersecurity training platform for sports coaches. Web and mobile app with training modules, assessment tools and simulated exercises.",
       "proj2-desc":"Mobile app with personalized learning modules, knowledge assessments and progress tracking for sports coaches. Awarded by the European Commission.",
       "proj3-desc":"Scenario-based, multilingual e-learning platform on digital safety for immigrant and refugee parents. Awarded by the European Commission.",
@@ -789,6 +938,10 @@
       "hero-location":"Warschau, Polen",
       "hero-cta-primary":"projekte ansehen",
       "hero-cta-secondary":"kontakt aufnehmen",
+      "avatar-role":"softwareentwickler",
+      "stat-repos":"repositories",
+      "stat-eu":"EU-geförderte plattformen",
+      "stat-since":"entwickelt seit",
       "about-tag":"// über mich",
       "about-title":"Ich baue gerne Systeme von Grund auf",
       "about-p1":"Ich studiere derzeit <strong>Informatik mit Schwerpunkt Mobile Application Design</strong> an der Vizja-Universität. Habe akademische und persönliche Projekte mit Java, Kotlin, Spring Boot, React Native, SQL und Git umgesetzt.",
@@ -815,9 +968,12 @@
       "proj-tag":"// projekte","proj-title":"Full-Stack-Projekte",
       "eu-heading":"// eu-geförderte projekte & eigene arbeiten",
       "feat-badge-rebuild":"neu aufgebaut",
+      "feat-badge-fullstack":"full-stack",
       "feat1-desc":"Mitarbeiterverwaltungssystem, das von einer Java-Swing-Desktop-App in eine Spring-Boot-REST-API mit React-Dashboard umgebaut wurde — JWT-Authentifizierung, bcrypt-Passwort-Hashing, rollenbasierter Zugriff.",
       "feat2-desc":"Ein Tool für zufällige Gewinnerziehungen, neu aufgebaut aus einer Java-Swing-App, die bei kleinen Teilnehmerlisten einfrieren konnte. Die neue Version validiert die Gewinneranzahl serverseitig und zeigt Gewinner nacheinander mit einer Konfetti-Animation an.",
       "feat3-desc":"Ein Krankenhaus-Terminsystem mit drei Rollen (Chefarzt, Arzt, Patient), neu aufgebaut aus einer Java-Swing-App, die Passwörter im Klartext speicherte und SQL per String-Verkettung baute. Jetzt: bcrypt, JPA-Parameterbindung und rollenbasierte Zugriffskontrolle bei jedem Endpunkt.",
+      "feat4-desc":"Eine Service-Tracking-Plattform für eine Motorrad-Werkstatt in einer Codebasis mit zwei Erlebniswelten: ein JWT-geschütztes Admin-Dashboard, in dem das Personal kategorisierte Wartungsarbeiten — Teile, Inspektionen, Fotos — protokolliert, und ein anmeldefreies Kundenportal, in dem Fahrzeughalter per Kennzeichen die komplette Servicehistorie einsehen, Termine anfragen und Fahrzeuge zum Verkauf durchsuchen können.",
+      "proj-goodpractice":"good practice",
       "proj1-desc":"Cybersicherheits-Schulungsplattform für Sporttrainer. Web- und mobile App mit Schulungsmodulen, Bewertungstools und simulierten Übungen.",
       "proj2-desc":"Mobile App mit personalisierten Lernmodulen, Wissenstests und Fortschrittsverfolgung für Sporttrainer. Von der Europäischen Kommission ausgezeichnet.",
       "proj3-desc":"Szenariobasierte, mehrsprachige E-Learning-Plattform zur digitalen Sicherheit für Einwanderer- und Flüchtlingseltern. Von der Europäischen Kommission ausgezeichnet.",
@@ -836,6 +992,10 @@
       "hero-location":"Warszawa, Polska",
       "hero-cta-primary":"zobacz projekty",
       "hero-cta-secondary":"skontaktuj się",
+      "avatar-role":"inżynier oprogramowania",
+      "stat-repos":"repozytoriów",
+      "stat-eu":"platform finansowanych przez UE",
+      "stat-since":"tworzy oprogramowanie od",
       "about-tag":"// o mnie",
       "about-title":"Lubię budować systemy od podstaw",
       "about-p1":"Studiuję obecnie <strong>Informatykę, specjalizację Projektowanie Aplikacji Mobilnych</strong> na Uniwersytecie Vizja. Tworzyłem projekty akademickie i osobiste z użyciem Java, Kotlin, Spring Boot, React Native, SQL i Git.",
@@ -862,9 +1022,12 @@
       "proj-tag":"// projekty","proj-title":"Projekty Full-Stack",
       "eu-heading":"// projekty finansowane przez ue i prace własne",
       "feat-badge-rebuild":"przebudowa",
+      "feat-badge-fullstack":"full-stack",
       "feat1-desc":"System zarządzania pracownikami przebudowany z aplikacji desktopowej Java Swing na REST API w Spring Boot z panelem React — uwierzytelnianie JWT, hashowanie haseł bcrypt, dostęp oparty na rolach.",
       "feat2-desc":"Narzędzie do losowania nagród przebudowane z aplikacji Java Swing, która mogła zawiesić się przy małej liczbie uczestników. Nowa wersja waliduje liczbę zwycięzców po stronie serwera i ujawnia zwycięzców pojedynczo z animacją konfetti.",
       "feat3-desc":"System rezerwacji wizyt szpitalnych z trzema rolami (ordynator, lekarz, pacjent), przebudowany z aplikacji Java Swing, która przechowywała hasła jawnym tekstem i budowała zapytania SQL przez konkatenację ciągów. Teraz: bcrypt, wiązanie parametrów JPA i kontrola dostępu oparta na rolach na każdym endpoincie.",
+      "feat4-desc":"Platforma do śledzenia serwisu pojazdów dla warsztatu motocyklowego, zbudowana jako jedna baza kodu z dwoma trybami: chronionym JWT panelem administracyjnym, w którym personel loguje kategoryzowane czynności serwisowe — części, przeglądy, zdjęcia — oraz bezloginowym portalem klienta, w którym właściciele sprawdzają pełną historię serwisową po numerze rejestracyjnym, zgłaszają wizyty i przeglądają pojazdy na sprzedaż.",
+      "proj-goodpractice":"dobra praktyka",
       "proj1-desc":"Platforma szkoleniowa z zakresu cyberbezpieczeństwa dla trenerów sportowych. Aplikacja webowa i mobilna z modułami szkoleniowymi, narzędziami oceny i symulacjami.",
       "proj2-desc":"Aplikacja mobilna ze spersonalizowanymi modułami edukacyjnymi, testami wiedzy i śledzeniem postępów dla trenerów sportowych. Nagrodzona przez Komisję Europejską.",
       "proj3-desc":"Wielojęzyczna platforma e-learningowa oparta na scenariuszach, dotycząca bezpieczeństwa cyfrowego dla rodziców imigrantów i uchodźców. Nagrodzona przez Komisję Europejską.",
@@ -916,6 +1079,3 @@
     items.forEach(el=>el.classList.add('in'));
   }
 </script>
-
-</body>
-</html>
